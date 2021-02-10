@@ -1,5 +1,9 @@
-<mat-tab-group mat-align-tabs="center" class="tab-group">
-  <mat-tab *ngFor="let tab of tabs">
-    <ng-template mat-tab-label>{{ tab }}</ng-template>
-  </mat-tab>
+<mat-tab-group
+  mat-align-tabs="center"
+  class="tab-group"
+  (selectedTabChange)="onTabChange($event.index)"
+>
+  <ng-container *ngFor="let tab of tabs; let i = index">
+    <mat-tab [label]="tab"></mat-tab>
+  </ng-container>
 </mat-tab-group>

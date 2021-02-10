@@ -1,2 +1,9 @@
-<app-tab-group></app-tab-group>
-<app-main-table></app-main-table>
+<app-tab-group (tabChange)="onTabChange($event)"></app-tab-group>
+<ng-container *ngIf="tabIndex === 0; else recomendationsTabActive">
+  <app-main-table [data]="mainDataService.getDefaultData()"></app-main-table>
+</ng-container>
+<ng-template #recomendationsTabActive>
+  <app-main-table
+    [data]="mainDataService.getRecomendationsData()"
+  ></app-main-table>
+</ng-template>

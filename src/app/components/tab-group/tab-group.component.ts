@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-tab-group',
@@ -6,9 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tab-group.component.scss'],
 })
 export class TabGroupComponent implements OnInit {
-  tabs = ['Исходные значения на 2021 год', 'Рекомендации на 2022 год'];
+  @Output() tabChange = new EventEmitter<number>();
+
+  tabs = ['Исходные значения на 2021 год', 'Рекомендации на 2022'];
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  onTabChange(tabIndex: number): void {
+    this.tabChange.emit(tabIndex);
+  }
 }
